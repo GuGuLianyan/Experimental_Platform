@@ -28,7 +28,6 @@ always@(posedge CLK or negedge RSTn)
 begin
 	if(RSTn == 0)
 		begin
-			WP_CNT <= 0;
 			REA_CNT <= 0;
 		end
 	else

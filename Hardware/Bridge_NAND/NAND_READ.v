@@ -5,7 +5,11 @@ module NAND_READ
 		parameter tHOLD = 1,
 		parameter tREA = 2,
 		parameter IO_DIR_OUT = 1,
-		parameter IO_DIR_IN = 0;
+		parameter IO_DIR_IN = 0,
+		parameter IS_OVER = 1,
+		parameter IS_NOT_OVER = 0,
+		parameter IS_CMD_NEW = 1,
+		parameter IS_CMD_NOT_NEW = 0
 	)
 	(
 		input wire CLK,
@@ -14,7 +18,9 @@ module NAND_READ
 		input wire CMD_IS_NEW,
 		output reg IO_DIR,
 		output reg[31:0] DATA_OUT,
+		output reg[9:0] DATA_OUT_ADDR,
 		output reg Operate_IS_OVER,
+		output reg DATA_OUT_WEn,
 		input wire[27:0] NAND_ADDR,
 		//////NAND Flash Interface////////
 		output reg CEn,
@@ -38,7 +44,7 @@ reg CMD_Send_CLE, CMD_Send_WEn, CMD_Send_ALE;
 NAND_WR_CMD
 	#(
 		.tWP_cnt(tWP),
-		.tHOLD_cnt(tHOLD),
+		.tHOLD_cnt(tHOLD)
 	)
 	WR_CMD(
 		.CLK(CLK),
@@ -90,7 +96,8 @@ NAND_RD
 	);
 	
 
-reg Read_Status;
+reg isRead_Success;
+reg[7:0] Read_Status;
 parameter Read_Success		= 1'b0;
 parameter Read_Fail			= 1'b1;
 
@@ -134,7 +141,7 @@ begin
 			case(R_FSM_current)
 				R_FSM_IDLE			:
 					begin
-						if(Start == 1)
+						if(CMD_IS_NEW == IS_CMD_NEW)
 							begin
 								R_FSM_next = R_FSM_SEND_CMD_1st;
 							end
@@ -200,7 +207,6 @@ begin
 					end
 				R_FSM_SEND_CMD_3rd  :
 					begin
-						begin
 						if(CMD_Send_Over == 1)
 							begin
 								R_FSM_next = R_FSM_READ_ST;
@@ -214,7 +220,7 @@ begin
 					begin
 						if(RD_DATA_Over == 1)
 							begin
-								if(Read_Status == Read_Success)
+								if(isRead_Success == Read_Success)
 									begin
 										R_FSM_next = R_FSM_SEND_CMD_4th;
 									end
@@ -230,7 +236,6 @@ begin
 					end
 				R_FSM_SEND_CMD_4th  :
 					begin
-						begin
 						if(CMD_Send_Over == 1)
 							begin
 								R_FSM_next = R_FSM_READ_DATA;
@@ -270,59 +275,108 @@ always@(posedge CLK or negedge RSTn)
 begin
 	if(RSTn == 0)
 		begin
-
-			
+			CMD_reg <= 0;
+			Operate_IS_OVER <= IS_NOT_OVER;
+			NAND_ADDR_reg <= 0;
+			DATA_OUT_WEn <= 0;
+			Read_CNT <= 0;
 		end
 	else
 		begin
 			case(R_FSM_current)
 				R_FSM_IDLE			:
 					begin
-						
+						CMD_reg <= 0;
+						Operate_IS_OVER <= Operate_IS_OVER;
+						Read_CNT <= 0;
+						DATA_OUT_WEn <= 0;
+						if(CMD_IS_NEW == IS_CMD_NEW)
+							begin
+								NAND_ADDR_reg <= NAND_ADDR;
+							end
+						else
+							begin
+								NAND_ADDR_reg <= 0;
+							end
 					end
 				R_FSM_SEND_CMD_1st  :
 					begin
-						
+						CMD_reg <= 8'h00;
+						Operate_IS_OVER <= IS_NOT_OVER;
+						NAND_ADDR_reg <= NAND_ADDR_reg;
 					end
 				R_FSM_SEND_ADDR	    :
 					begin
-						
+						CMD_reg <= 8'h00;
+						Operate_IS_OVER <= IS_NOT_OVER;
+						NAND_ADDR_reg <= NAND_ADDR_reg;
 					end
 				R_FSM_SEND_CMD_2nd  :
 					begin
-						
+						CMD_reg <= 8'h30;
+						Operate_IS_OVER <= IS_NOT_OVER;
+						NAND_ADDR_reg <= NAND_ADDR_reg;
 					end
 				R_FSM_Wait_RDY	    :
 					begin
-						
+						CMD_reg <= 8'h00;
+						Operate_IS_OVER <= IS_NOT_OVER;
+						NAND_ADDR_reg <= NAND_ADDR_reg;
 					end
 				R_FSM_Wait_BSY	    :
 					begin
-						
+						CMD_reg <= 8'h00;
+						Operate_IS_OVER <= IS_NOT_OVER;
+						NAND_ADDR_reg <= NAND_ADDR_reg;
 					end
 				R_FSM_SEND_CMD_3rd  :
 					begin
-						
+						CMD_reg <= 8'h70;
+						Operate_IS_OVER <= IS_NOT_OVER;
+						NAND_ADDR_reg <= NAND_ADDR_reg;
 					end
 				R_FSM_READ_ST		:
 					begin
-						
+						CMD_reg <= 8'h00;
+						Operate_IS_OVER <= IS_NOT_OVER;
+						NAND_ADDR_reg <= NAND_ADDR_reg;
+						Read_Status <= IO;
 					end
 				R_FSM_SEND_CMD_4th  :
 					begin
-						
+						CMD_reg <= 8'h00;
+						Operate_IS_OVER <= IS_NOT_OVER;
+						NAND_ADDR_reg <= NAND_ADDR_reg;
+						Read_Status <= IO;
 					end
 				R_FSM_READ_DATA	    :
 					begin
-						
+						DATA_OUT_WEn <= 1;
+						if(RD_DATA_Over == 1)
+							begin
+								Read_CNT <= Read_CNT + 1;
+								DATA_OUT_ADDR <= Read_CNT[10:2];
+							end
+						else
+							begin
+								Read_CNT <= Read_CNT;
+							end
 					end
 				R_FSM_OVER		    :
 					begin
-						
+						DATA_OUT_WEn <= 0;
+						Read_CNT <= 0;
+						DATA_OUT_ADDR <= 0;
+						CMD_reg <= 0;
+						Operate_IS_OVER <= 1;
 					end
 				default:
 					begin
-						
+						DATA_OUT_WEn <= 0;
+						Read_CNT <= 0;
+						DATA_OUT_ADDR <= 0;
+						CMD_reg <= 0;
+						Operate_IS_OVER <= 0;
 					end
 			endcase
 		end
@@ -359,6 +413,100 @@ begin
 		end
 end
 
+
+always@(*)
+begin
+	if(IO[0:0] == 1)
+		begin
+			isRead_Success = Read_Fail;
+		end
+	else
+		begin
+			isRead_Success = Read_Success;
+		end
+end
+
+always@(*)
+begin
+	if(RSTn == 0)
+		begin
+			CEn = 1;
+			WEn = 1;
+			REn = 1;
+			CLE = 0;
+			ALE = 0;
+			WPn = 1;
+		end
+	else
+		begin
+			case(R_FSM_current)
+				R_FSM_IDLE			:
+					begin
+						CEn = 1;
+						WEn = 1;
+						REn = 1;
+						CLE = 0;
+						ALE = 0;
+						WPn = 1;
+					end
+				R_FSM_SEND_CMD_1st , R_FSM_SEND_CMD_2nd,
+				R_FSM_SEND_CMD_3rd, R_FSM_SEND_CMD_4th:
+					begin
+						CEn = 0;
+						WEn = CMD_Send_WEn;
+						REn = 1;
+						CLE = CMD_Send_CLE;
+						ALE = CMD_Send_ALE;
+						WPn = 1;
+					end
+				R_FSM_SEND_ADDR	    :
+					begin
+						CEn = 0;
+						WEn = ADDR_Send_WEn;
+						REn = 1;
+						CLE = ADDR_Send_CLE;
+						ALE = ADDR_Send_ALE;
+						WPn = 1;
+					end
+				R_FSM_Wait_RDY, R_FSM_Wait_BSY    :
+					begin
+						CEn = 1;
+						WEn = 1;
+						REn = 1;
+						CLE = 0;
+						ALE = 0;
+						WPn = 1;
+					end
+				R_FSM_READ_ST,R_FSM_READ_DATA	:
+					begin
+						CEn = 0;
+						WEn = 1;
+						REn = RD_Data_REn;
+						CLE = RD_Data_CLE;
+						ALE = RD_Data_ALE;
+						WPn = 1;
+					end
+				R_FSM_OVER		    :
+					begin
+						CEn = 1;
+						WEn = 1;
+						REn = 1;
+						CLE = 0;
+						ALE = 0;
+						WPn = 1;
+					end
+				default:
+					begin
+						CEn = 1;
+						WEn = 1;
+						REn = 1;
+						CLE = 0;
+						ALE = 0;
+						WPn = 1;
+					end
+			endcase
+		end
+end
 
 
 

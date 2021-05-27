@@ -1,9 +1,12 @@
-E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM.v
+E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_WR_CMD.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_WR_CMD.v
 Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
--- Compiling module TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM
+-- Compiling module NAND_WR_CMD
 
 Top level modules:
-	TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM
+	NAND_WR_CMD
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge_CFG.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge_CFG.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
 
 } {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte.v
 Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
@@ -12,8 +15,12 @@ Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
 Top level modules:
 	TPLSRAM_2112Byte
 
-} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge_CFG.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge_CFG.v
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM.v
 Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM
+
+Top level modules:
+	TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM
 
 } {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge.v {1 {vlog -work work -vopt +incdir+E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge.v
 Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
@@ -22,7 +29,59 @@ Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
 Top level modules:
 	AHBLite_NAND_Bridge
 
-} {} {}} D:/Libero/Designer/lib/modelsim/precompiled/vlog/src/smartfusion2.v {1 {vlog -work work -vopt D:/Libero/Designer/lib/modelsim/precompiled/vlog/src/smartfusion2.v
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v {0 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module NAND_RD
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(117): (vlog-2110) Illegal reference to net "CLE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(118): (vlog-2110) Illegal reference to net "ALE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(119): (vlog-2110) Illegal reference to net "REn".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(120): (vlog-2110) Illegal reference to net "Over".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(127): (vlog-2110) Illegal reference to net "CLE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(128): (vlog-2110) Illegal reference to net "ALE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(129): (vlog-2110) Illegal reference to net "REn".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(130): (vlog-2110) Illegal reference to net "Over".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(134): (vlog-2110) Illegal reference to net "CLE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(135): (vlog-2110) Illegal reference to net "ALE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(136): (vlog-2110) Illegal reference to net "REn".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(137): (vlog-2110) Illegal reference to net "Over".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(141): (vlog-2110) Illegal reference to net "CLE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(142): (vlog-2110) Illegal reference to net "ALE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(143): (vlog-2110) Illegal reference to net "REn".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(144): (vlog-2110) Illegal reference to net "Over".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(148): (vlog-2110) Illegal reference to net "CLE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(149): (vlog-2110) Illegal reference to net "ALE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(150): (vlog-2110) Illegal reference to net "REn".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(151): (vlog-2110) Illegal reference to net "Over".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(155): (vlog-2110) Illegal reference to net "CLE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(156): (vlog-2110) Illegal reference to net "ALE".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(157): (vlog-2110) Illegal reference to net "REn".
+
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_RD.v(158): (vlog-2110) Illegal reference to net "Over".
+
+
+} {4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 33.0 34.0 35.0 36.0 37.0 38.0 39.0 40.0 41.0 42.0 43.0 44.0 45.0 46.0 47.0 48.0 49.0 50.0 51.0} {}} D:/Libero/Designer/lib/modelsim/precompiled/vlog/src/smartfusion2.v {1 {vlog -work work -vopt D:/Libero/Designer/lib/modelsim/precompiled/vlog/src/smartfusion2.v
 Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
 -- Compiling UDP UDP_DFF
 -- Compiling UDP UDP_DL
@@ -402,7 +461,12 @@ Top level modules:
 	ReadPort
 	MACC
 
-} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Bridge_Modelsim/bridge_tb.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Bridge_Modelsim/bridge_tb.v
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_WR_ADDR.v {0 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_WR_ADDR.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module NAND_WR_ADDR_ALL
+** Error: E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/NAND_WR_ADDR.v(20): near "reg": syntax error, unexpected reg, expecting ';'
+
+} {4.0 5.0} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Bridge_Modelsim/bridge_tb.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Bridge_Modelsim/bridge_tb.v
 Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
 -- Compiling module bridge_tb
 
