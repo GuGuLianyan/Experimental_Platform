@@ -383,6 +383,7 @@ begin
 end
 
 
+
 assign IO = (IO_DIR == IO_DIR_OUT)? IO_OUT_REG : 8'hZZ;
 always@(*)
 begin
