@@ -1,0 +1,49 @@
+m255
+K3
+13
+cModel Technology
+dE:\Project\Experimental_Platform\Project\Source\Hardware\Bridge_CAN\tb
+T_opt
+Vz`aZzT:VQfbA7<5`5aSaY2
+04 2 4 work tb fast 0
+=6-80fa5b8019b2-604ec7ad-1c6-f134
+o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+OE;O;10.1a;51
+vADC
+I@=mzm05oDi[6jK3IfM7Po2
+VAjc`7dT72eCmSB8TNnkBL0
+Z0 dE:\Project\Experimental_Platform\Project\Source\Hardware\ADC\tb
+w1615775648
+8E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/ADC.v
+FE:/Project/Experimental_Platform/Project/Source/Hardware/ADC/ADC.v
+L0 1
+Z1 OE;L;10.1a;51
+r1
+31
+Z2 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+n@a@d@c
+!s90 -reportprogress|300|-work|work|-vopt|E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/ADC.v|
+!s100 Ej]XUCh]=ATYHHQo_A`^U1
+!s108 1615775654.547000
+!s107 E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/ADC.v|
+!i10b 1
+!s85 0
+vtb
+IgD@==4MaBkP1_F4gI7oIB2
+VV@Xn<HnSRM[I5c1?BH]3a3
+Z3 dE:\Project\Experimental_Platform\Project\Source\Hardware\ADC\tb
+w1615775499
+8E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/tb.v
+FE:/Project/Experimental_Platform/Project/Source/Hardware/ADC/tb.v
+L0 2
+R1
+r1
+31
+R2
+!s100 oCComi>GD[o0DK=b^blNM3
+!s90 -reportprogress|300|-work|work|-vopt|E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/tb.v|
+!i10b 1
+!s85 0
+!s108 1615775654.616000
+!s107 E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/tb.v|

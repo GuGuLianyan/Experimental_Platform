@@ -1,0 +1,50 @@
+m255
+K3
+13
+cModel Technology
+dD:\ModelSim\examples
+T_opt
+VBLTR]1M7T2m1m4J2<<N1b3
+04 22 4 work AHBLite_1553_Bridge_tb fast 0
+=4-80fa5b8019b2-60531211-1c9-16424
+o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+OE;O;10.1a;51
+vAHBLite_1553_Bridge
+I?YEcaH:Z49A@9?7[1HLcY3
+VPdYUNRjoz`N<AhoMn81K>1
+Z0 dE:\Project\Experimental_Platform\Project\Source\Hardware\Bridge_1553B\tb
+w1616055219
+8E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/AHBLite_1553_Bridge.v
+FE:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/AHBLite_1553_Bridge.v
+L0 3
+Z1 OE;L;10.1a;51
+r1
+31
+Z2 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+n@a@h@b@lite_1553_@bridge
+!s100 e559_2_gBSF5DU4cmS6aZ3
+!s90 -reportprogress|300|-work|work|-vopt|E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/AHBLite_1553_Bridge.v|
+!i10b 1
+!s85 0
+!s108 1616056843.940000
+!s107 AHBLite_1553_Bridge_CFG.v|E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/AHBLite_1553_Bridge.v|
+vAHBLite_1553_Bridge_tb
+IecCId9<`@@]zT`dJ2X5NI2
+Vo_9<hYDMU:XcLkg>bTJaH2
+Z3 dE:\Project\Experimental_Platform\Project\Source\Hardware\Bridge_1553B\tb
+w1616056836
+8E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/tb/AHBLite_1553_Bridge_tb.v
+FE:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/tb/AHBLite_1553_Bridge_tb.v
+L0 3
+R1
+r1
+31
+R2
+n@a@h@b@lite_1553_@bridge_tb
+!s90 -reportprogress|300|-work|work|-vopt|E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/tb/AHBLite_1553_Bridge_tb.v|
+!s100 eZRlU694?nY1Xej[3Z_G00
+!s108 1616056843.827000
+!s107 E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/tb/AHBLite_1553_Bridge_tb.v|
+!i10b 1
+!s85 0

@@ -1,0 +1,18 @@
+E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/tb/Bridge_CAN_tb.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/tb/Bridge_CAN_tb.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module Bridge_CAN_tb
+
+Top level modules:
+	Bridge_CAN_tb
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/AHBLite_CAN_Bridge.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/AHBLite_CAN_Bridge.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module AHBLite_CAN_Bridge
+
+Top level modules:
+	AHBLite_CAN_Bridge
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/tb/AHBLite_CAN_Bridge_CFG.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/tb/AHBLite_CAN_Bridge_CFG.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+
+} {} {}}

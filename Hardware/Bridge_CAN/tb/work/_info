@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\Project\Experimental_Platform\Project\Source\Hardware\Bridge_1553B\tb
+T_opt
+VGX0JTiY;eHhdAEn`7l;1D1
+04 13 4 work Bridge_CAN_tb fast 0
+=4-80fa5b8019b2-604ade65-23a-ad30
+Z1 o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+Z2 OE;O;10.1a;51
+Z3 dE:\Project\Experimental_Platform\Project\Source\Hardware\Bridge_1553B\tb
+T_opt1
+V:EhTF8lkYod35a6_OMM[43
+Z4 04 3 4 work ADC fast 0
+=1-80fa5b8019b2-604c6c2d-76-a384
+o-quiet -auto_acc_if_foreign -work work
+n@_opt1
+R2
+R3
+T_opt2
+VcaX1G]Hd:bYOBHUb]G@D[3
+R4
+=1-80fa5b8019b2-604c6c92-2aa-6114
+R1
+n@_opt2
+R2
+vADC
+Im_So^<[Rjb]4XJo;<Ha0:0
+VAjc`7dT72eCmSB8TNnkBL0
+Z5 dE:\Project\Experimental_Platform\Project\Source\Hardware\Bridge_CAN\tb
+w1615532900
+8E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/ADC.v
+FE:/Project/Experimental_Platform/Project/Source/Hardware/ADC/ADC.v
+L0 1
+Z6 OE;L;10.1a;51
+r1
+31
+Z7 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+n@a@d@c
+!i10b 1
+!s100 IN9@iO^dL5XS<6<MGQJWR2
+!s85 0
+!s108 1615621157.426000
+!s107 E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/ADC.v|
+!s90 -reportprogress|300|-work|work|-vopt|E:/Project/Experimental_Platform/Project/Source/Hardware/ADC/ADC.v|
+vAHBLite_CAN_Bridge
+IAV`K8gVeYGDGP3]XE^ikz1
+V6zDeUUn@eUUoNYOjMeV7;0
+R5
+w1615519267
+8E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/AHBLite_CAN_Bridge.v
+FE:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/AHBLite_CAN_Bridge.v
+L0 3
+R6
+r1
+31
+R7
+n@a@h@b@lite_@c@a@n_@bridge
+!s100 Pc5:G1@W4c7ejz5[ek?XQ1
+!s90 -reportprogress|300|-work|work|-vopt|E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/AHBLite_CAN_Bridge.v|
+!s108 1615621157.350000
+!s107 AHBLite_CAN_Bridge_CFG.v|E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/AHBLite_CAN_Bridge.v|
+!i10b 1
+!s85 0
+vBridge_CAN_tb
+I8S6EdLhCIW>=m>JN`OzES3
+VnWm7k;j5P[n;=eW`zR;mz3
+R5
+w1615519320
+8E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/tb/Bridge_CAN_tb.v
+FE:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/tb/Bridge_CAN_tb.v
+L0 3
+R6
+r1
+31
+R7
+n@bridge_@c@a@n_tb
+!s100 dkLO78ETNmS]c2BW=Hk]20
+!s90 -reportprogress|300|-work|work|-vopt|E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/tb/Bridge_CAN_tb.v|
+!s108 1615621157.279000
+!s107 E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_CAN/tb/Bridge_CAN_tb.v|
+!i10b 1
+!s85 0

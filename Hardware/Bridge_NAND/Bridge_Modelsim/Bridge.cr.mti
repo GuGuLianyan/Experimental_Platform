@@ -1,0 +1,412 @@
+E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM
+
+Top level modules:
+	TPLSRAM_2112Byte_TPLSRAM_2112Byte_0_TPSRAM
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Actel_ip/TPLSRAM_2112Byte.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module TPLSRAM_2112Byte
+
+Top level modules:
+	TPLSRAM_2112Byte
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge_CFG.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge_CFG.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge.v {1 {vlog -work work -vopt +incdir+E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/AHBLite_NAND_Bridge.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module AHBLite_NAND_Bridge
+
+Top level modules:
+	AHBLite_NAND_Bridge
+
+} {} {}} D:/Libero/Designer/lib/modelsim/precompiled/vlog/src/smartfusion2.v {1 {vlog -work work -vopt D:/Libero/Designer/lib/modelsim/precompiled/vlog/src/smartfusion2.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling UDP UDP_DFF
+-- Compiling UDP UDP_DL
+-- Compiling UDP UDP_MUX2
+-- Compiling UDP UDP_GBLAT
+-- Compiling UDP UDP_BUFF
+-- Compiling module SLE_Prim
+-- Compiling module GND
+-- Compiling module VCC
+-- Compiling module ARI1
+-- Compiling module CFG4
+-- Compiling module CFG3
+-- Compiling module CFG2
+-- Compiling module CFG1
+-- Compiling module CFG0
+-- Compiling module INV
+-- Compiling module INV_BA
+-- Compiling module INVD
+-- Compiling module BUFF
+-- Compiling module BUFD
+-- Compiling module NAND3
+-- Compiling module MX2
+-- Compiling module AND3
+-- Compiling module OR2
+-- Compiling module XOR2
+-- Compiling module NOR2
+-- Compiling module AND2
+-- Compiling module OR3
+-- Compiling module XOR3
+-- Compiling module NOR3
+-- Compiling module NAND2
+-- Compiling module AND4
+-- Compiling module NAND4
+-- Compiling module OR4
+-- Compiling module NOR4
+-- Compiling module XOR4
+-- Compiling module XOR8
+-- Compiling module MX4
+-- Compiling module BUFD_DELAY
+-- Compiling module ARI1_CC
+-- Compiling module FCINIT_BUFF
+-- Compiling module FCEND_BUFF
+-- Compiling module FCINIT_BUFF_CC
+-- Compiling module FCEND_BUFF_CC
+-- Compiling module CC_CONFIG
+-- Compiling module CC_CONFIG_2
+-- Compiling module SLE
+-- Compiling module DFN1E1C0
+-- Compiling module DFN1P0
+-- Compiling module DFN1E1
+-- Compiling module DFN1E1P0
+-- Compiling module DFN1
+-- Compiling module DFN1C0
+-- Compiling module DLN1
+-- Compiling module DLN1C0
+-- Compiling module DLN1P0
+-- Compiling module CFG1_IP_B
+-- Compiling module CFG1_IP_C
+-- Compiling module CFG2_IP_BC
+-- Compiling module CFG3_IP_BCD
+-- Compiling module SLE_IP_CLK
+-- Compiling module SLE_IP_EN
+-- Compiling module SLE_IP_CLKEN
+-- Compiling module IP_INTERFACE
+-- Compiling module IOPAD_IN
+-- Compiling module IOPAD_TRI
+-- Compiling module IOPAD_BI
+-- Compiling module IOPAD_DELAY
+-- Compiling module IOPAD_VDD
+-- Compiling module IOPAD_IN_VDDI
+-- Compiling module IOPAD_TRI_VDDI
+-- Compiling module IOPAD_BI_VDDI
+-- Compiling module IO_TEST
+-- Compiling module IOIN_IB
+-- Compiling module IO_UNUSED
+-- Compiling module IOTRI_OB_EB
+-- Compiling module IOBI_IB_OB_EB
+-- Compiling module LIVE_FB_PROBES
+-- Compiling module LIVE_PROBE_FB
+-- Compiling module PRB_IB
+-- Compiling module IOINFF_BYPASS
+-- Compiling module IOOUTFF_BYPASS
+-- Compiling module IOENFF_BYPASS
+-- Compiling module IOPAD_VCCA
+-- Compiling module IOPAD_IN_VCCI
+-- Compiling module IOPAD_TRI_VCCI
+-- Compiling module IOPAD_BI_VCCI
+-- Compiling module IOINFF
+-- Compiling module IOINFF_TEST
+-- Compiling module DDR_IN
+-- Compiling module DDR_IN_UNIT
+-- Compiling module IOOEFF_TEST
+-- Compiling module IOOEFF
+-- Compiling module IOOEFF_TEST_UNIT
+-- Compiling module DDR_OUT
+-- Compiling module DDR_OE_UNIT
+-- Compiling module RGB
+-- Compiling module RGB_TEST
+-- Compiling module RGCLKINT
+-- Compiling module RCLKINT
+-- Compiling module GBM
+-- Compiling module GB
+-- Compiling module GB_TEST
+-- Compiling module GCLKINT
+-- Compiling module CLKINT
+-- Compiling module CLKINT_PRESERVE
+-- Compiling module CLKBUF
+-- Compiling module CLKBIBUF
+-- Compiling module GCLKBIBUF
+-- Compiling module GCLKBUF
+-- Compiling module GBM_NG
+-- Compiling module GB_NG
+-- Compiling module RGB_NG
+-- Compiling module OUTBUF
+-- Compiling module INBUF
+-- Compiling module TRIBUFF
+-- Compiling module BIBUF
+-- Compiling module INBUF_DIFF
+-- Compiling module CLKBUF_DIFF
+-- Compiling module GCLKBUF_DIFF
+-- Compiling module OUTBUF_DIFF
+-- Compiling module BIBUF_DIFF
+-- Compiling module TRIBUFF_DIFF
+-- Compiling module IOPADN_IN
+-- Compiling module IOPADN_TRI
+-- Compiling module IOPADN_BI
+-- Compiling module IOPADN_DELAY
+-- Compiling module IOPADN_VDD
+-- Compiling module IOPADN_BI_VDDI
+-- Compiling module IOPADN_IN_VDDI
+-- Compiling module IOPADN_TRI_VDDI
+-- Compiling module IOPADP_IN
+-- Compiling module IOPADP_TRI
+-- Compiling module IOPADP_BI
+-- Compiling module IO_DIFF
+-- Compiling module IOPADP_DELAY
+-- Compiling module IOPADP_VDD
+-- Compiling module IOPADP_BI_VDDI
+-- Compiling module IOPADP_IN_VDDI
+-- Compiling module IOPADP_TRI_VDDI
+-- Compiling module IOPADN_VCCA
+-- Compiling module IOPADN_BI_VCCI
+-- Compiling module IOPADN_IN_VCCI
+-- Compiling module IOPADN_TRI_VCCI
+-- Compiling module IOPADP_VCCA
+-- Compiling module IOPADP_BI_VCCI
+-- Compiling module IOPADP_IN_VCCI
+-- Compiling module IOPADP_TRI_VCCI
+-- Compiling module G4C
+-- Compiling module UJTAG
+-- Compiling module UJTAG_SYSRESET
+-- Compiling module UJTAG_SYSRESET_FF
+-- Compiling module SYSRESET_FF
+-- Compiling module UJTAG_FF
+-- Compiling module SYSRESET
+-- Compiling module RCOSC_25_50MHZ
+-- Compiling module RCOSC_1MHZ
+-- Compiling module XTLOSC
+-- Compiling module RCOSC_1MHZ_FAB
+-- Compiling module RCOSC_25_50MHZ_FAB
+-- Compiling module XTLOSC_FAB
+-- Compiling module FLASH_FREEZE
+-- Compiling module ODT_DYNAMIC
+-- Compiling module ODT_DYNAMIC_UNIT
+-- Compiling module TAMPER
+-- Compiling module FF_TAMPER_RSTATUS
+-- Compiling module SYSRESET_FF_TAMPER_RSTATUS
+-- Compiling module UJTAG_FF_TAMPER_RSTATUS
+-- Compiling module UJTAG_SYSRESET_FF_TAMPER_RSTATUS
+-- Compiling module SYSCTRL_RESET_STATUS
+-- Compiling module CCC_CONFIG
+-- Compiling module CCC_FB_MUX
+-- Compiling module CCC_FB_DIV
+-- Compiling module CCC_NGMUX
+-- Compiling module CCC_NGPREMUX
+-- Compiling module CCC_NGMUX0
+-- Compiling module CCC_NGMUX1
+-- Compiling module CCC_NGMUX2
+-- Compiling module CCC_NGMUX3
+-- Compiling module CCC_RF_MUX
+-- Compiling module CCC_RF_DIV
+-- Compiling module CCC_DELAY
+-- Compiling module CCC_FB_DELAY
+-- Compiling module CCC_RF_DELAY
+-- Compiling module CCC_GPD_MUX
+-- Compiling module CCC_GPD
+-- Compiling module CCC_GPD_MUX0
+-- Compiling module CCC_GPD_MUX1
+-- Compiling module CCC_GPD_MUX2
+-- Compiling module CCC_GPD_MUX3
+-- Compiling module CCC_GPD0
+-- Compiling module CCC_GPD1
+-- Compiling module CCC_GPD2
+-- Compiling module CCC_GPD3
+-- Compiling module ABI_PLL_FRONT
+-- Compiling module ABI_DIVQ
+-- Compiling module ABI_PHASE
+-- Compiling module ABISCB82
+-- Compiling module CCC_PLL
+-- Compiling module CCC_SYNCB_GEN
+-- Compiling module SYNCGEN_CNT14
+-- Compiling module RSTN_SYNC
+-- Compiling module Freq_Divider
+-- Compiling module Even_Divider
+-- Compiling module Odd_Divider
+-- Compiling module Divide_2
+-- Compiling module CCC
+-- Compiling module RAM_DLY
+-- Compiling module RAM1K18
+-- Compiling module RAM64x18_IP
+-- Compiling module RAM64x18
+-- Compiling module ReadPort
+-- Compiling module MACC_COMB
+-- Compiling module datareg
+-- Compiling module cntlreg
+-- Compiling module MACC_IP_P
+-- Compiling module MACC_IP
+-- Compiling module MACC
+
+Top level modules:
+	GND
+	VCC
+	CFG1
+	CFG0
+	INV
+	INV_BA
+	INVD
+	BUFF
+	BUFD
+	NAND3
+	MX2
+	AND3
+	OR2
+	XOR2
+	NOR2
+	AND2
+	OR3
+	XOR3
+	NOR3
+	NAND2
+	AND4
+	NAND4
+	OR4
+	NOR4
+	XOR4
+	XOR8
+	MX4
+	BUFD_DELAY
+	FCINIT_BUFF
+	FCEND_BUFF
+	FCINIT_BUFF_CC
+	FCEND_BUFF_CC
+	CC_CONFIG
+	DFN1E1C0
+	DFN1P0
+	DFN1E1
+	DFN1E1P0
+	DFN1
+	DFN1C0
+	DLN1
+	DLN1C0
+	DLN1P0
+	CFG1_IP_B
+	CFG1_IP_C
+	CFG2_IP_BC
+	CFG3_IP_BCD
+	SLE_IP_CLK
+	SLE_IP_EN
+	SLE_IP_CLKEN
+	IP_INTERFACE
+	IOPAD_IN
+	IOPAD_TRI
+	IOPAD_BI
+	IOPAD_DELAY
+	IOPAD_VDD
+	IOPAD_IN_VDDI
+	IOPAD_TRI_VDDI
+	IOPAD_BI_VDDI
+	IO_TEST
+	IOIN_IB
+	IO_UNUSED
+	IOTRI_OB_EB
+	IOBI_IB_OB_EB
+	LIVE_FB_PROBES
+	LIVE_PROBE_FB
+	PRB_IB
+	IOINFF_BYPASS
+	IOOUTFF_BYPASS
+	IOENFF_BYPASS
+	IOPAD_VCCA
+	IOPAD_IN_VCCI
+	IOPAD_TRI_VCCI
+	IOPAD_BI_VCCI
+	IOINFF
+	IOINFF_TEST
+	DDR_IN
+	DDR_IN_UNIT
+	IOOEFF_TEST
+	IOOEFF
+	DDR_OUT
+	DDR_OE_UNIT
+	RGB
+	RGB_TEST
+	RGCLKINT
+	RCLKINT
+	GBM
+	GB
+	GB_TEST
+	GCLKINT
+	CLKINT
+	CLKINT_PRESERVE
+	CLKBUF
+	CLKBIBUF
+	GCLKBIBUF
+	GCLKBUF
+	GBM_NG
+	GB_NG
+	RGB_NG
+	OUTBUF
+	INBUF
+	TRIBUFF
+	BIBUF
+	INBUF_DIFF
+	CLKBUF_DIFF
+	GCLKBUF_DIFF
+	OUTBUF_DIFF
+	BIBUF_DIFF
+	TRIBUFF_DIFF
+	IOPADN_IN
+	IOPADN_TRI
+	IOPADN_BI
+	IOPADN_DELAY
+	IOPADN_VDD
+	IOPADN_BI_VDDI
+	IOPADN_IN_VDDI
+	IOPADN_TRI_VDDI
+	IOPADP_IN
+	IOPADP_TRI
+	IOPADP_BI
+	IO_DIFF
+	IOPADP_DELAY
+	IOPADP_VDD
+	IOPADP_BI_VDDI
+	IOPADP_IN_VDDI
+	IOPADP_TRI_VDDI
+	IOPADN_VCCA
+	IOPADN_BI_VCCI
+	IOPADN_IN_VCCI
+	IOPADN_TRI_VCCI
+	IOPADP_VCCA
+	IOPADP_BI_VCCI
+	IOPADP_IN_VCCI
+	IOPADP_TRI_VCCI
+	G4C
+	UJTAG_SYSRESET
+	UJTAG_SYSRESET_FF
+	SYSRESET_FF
+	UJTAG_FF
+	RCOSC_25_50MHZ
+	RCOSC_1MHZ
+	XTLOSC
+	RCOSC_1MHZ_FAB
+	RCOSC_25_50MHZ_FAB
+	XTLOSC_FAB
+	FLASH_FREEZE
+	ODT_DYNAMIC
+	ODT_DYNAMIC_UNIT
+	TAMPER
+	SYSRESET_FF_TAMPER_RSTATUS
+	UJTAG_FF_TAMPER_RSTATUS
+	UJTAG_SYSRESET_FF_TAMPER_RSTATUS
+	SYSCTRL_RESET_STATUS
+	ABI_DIVQ
+	CCC
+	RAM1K18
+	RAM64x18
+	ReadPort
+	MACC
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Bridge_Modelsim/bridge_tb.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_NAND/Bridge_Modelsim/bridge_tb.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module bridge_tb
+
+Top level modules:
+	bridge_tb
+
+} {} {}}

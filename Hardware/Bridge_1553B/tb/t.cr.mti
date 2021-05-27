@@ -1,0 +1,18 @@
+E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/AHBLite_1553_Bridge_CFG.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/AHBLite_1553_Bridge_CFG.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/AHBLite_1553_Bridge.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/AHBLite_1553_Bridge.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module AHBLite_1553_Bridge
+
+Top level modules:
+	AHBLite_1553_Bridge
+
+} {} {}} E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/tb/AHBLite_1553_Bridge_tb.v {1 {vlog -work work -vopt E:/Project/Experimental_Platform/Project/Source/Hardware/Bridge_1553B/tb/AHBLite_1553_Bridge_tb.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module AHBLite_1553_Bridge_tb
+
+Top level modules:
+	AHBLite_1553_Bridge_tb
+
+} {} {}}
