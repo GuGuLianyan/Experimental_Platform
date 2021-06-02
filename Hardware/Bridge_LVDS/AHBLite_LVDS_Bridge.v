@@ -1,8 +1,8 @@
-`	
+`include "AHBLite_LVDS_Bridge_CFG.v"
 
 module AHBLite_LVDS_Bridge
 	#(
-		parameter LVDS_BUF_ADDR_SIZE = 32,
+		parameter LVDS_BUF_ADDR_SIZE = 32
 		
 	)
 	(
@@ -172,10 +172,7 @@ module AHBLite_LVDS_Bridge
 			begin
 				HREADYOUT <= HREADYOUT_RDY;
 				HRESP <= HRESP_OKAY;
-				EU1_LVDS_BUF_ADDR <= 0;
-				EU2_LVDS_BUF_ADDR <= 0;
-				EU3_LVDS_BUF_ADDR <= 0;
-				EU4_LVDS_BUF_ADDR <= 0;
+				EU_INTER_ADDR <= 0;
 				LVDS_RX_STATE_ADDR <= 0;
 				RX_STATE_CLEAR <= notRX_STATE_CLEAR;
 			end
@@ -195,7 +192,7 @@ module AHBLite_LVDS_Bridge
 												||(HADDR == `AHBLite_LVDS_EU4_STATE)
 											)
 												begin
-													LVDS_RX_STATE_ADDR <= (HADDR - `AHBLite_LVDS_Bridge_BASE_ADDR)[3:0];
+													LVDS_RX_STATE_ADDR <= (HADDR - `AHBLite_LVDS_Bridge_BASE_ADDR);
 													RX_STATE_CLEAR <= isRX_STATE_CLEAR;
 													HREADYOUT <= HREADYOUT_BSY;
 												end
@@ -215,7 +212,7 @@ module AHBLite_LVDS_Bridge
 												||(HADDR == `AHBLite_LVDS_EU4_STATE)
 											)
 												begin
-													LVDS_RX_STATE_ADDR <= (HADDR - `AHBLite_LVDS_Bridge_BASE_ADDR)[3:0];
+													LVDS_RX_STATE_ADDR <= (HADDR - `AHBLite_LVDS_Bridge_BASE_ADDR);
 													RX_STATE_CLEAR <= notRX_STATE_CLEAR;
 													HREADYOUT <= HREADYOUT_BSY;
 												end
@@ -224,42 +221,39 @@ module AHBLite_LVDS_Bridge
 												&&(HADDR <= `AHBLite_LVDS_BUFF_END_ADDR)
 											)
 												begin
-													EU1_LVDS_BUF_ADDR <= HADDR;
-													EU2_LVDS_BUF_ADDR <= HADDR;
-													EU3_LVDS_BUF_ADDR <= HADDR;
-													EU4_LVDS_BUF_ADDR <= HADDR;
+													EU_INTER_ADDR <= HADDR;
 													HREADYOUT <= HREADYOUT_BSY;
 													if(
-														(HADDR >= AHBLite_LVDS_BUFF_BASE_ADDR)
-														&&(HADDR < (AHBLite_LVDS_BUFF_BASE_ADDR + 32'h800))
+														(HADDR >= `AHBLite_LVDS_BUFF_BASE_ADDR)
+														&&(HADDR < (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h800))
 													)
 														begin
 															EU_Slect <= 0;
-															EU_INTER_ADDR <= (HADDR - AHBLite_LVDS_BUFF_BASE_ADDR)>>2;
+															EU_INTER_ADDR <= (HADDR - `AHBLite_LVDS_BUFF_BASE_ADDR)>>2;
 														end
 													else if(
-														(HADDR >= (AHBLite_LVDS_BUFF_BASE_ADDR + 32'h800))
-														&&(HADDR < (AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1000))
+														(HADDR >= (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h800))
+														&&(HADDR < (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1000))
 													)
 														begin
 															EU_Slect <= 1;
-															EU_INTER_ADDR <= (HADDR - AHBLite_LVDS_BUFF_BASE_ADDR - 32'h800)>>2;
+															EU_INTER_ADDR <= (HADDR - `AHBLite_LVDS_BUFF_BASE_ADDR - 32'h800)>>2;
 														end
 													else if(
-														(HADDR >= (AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1000))
-														&&(HADDR < (AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1800))
+														(HADDR >= (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1000))
+														&&(HADDR < (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1800))
 													)
 														begin
 															EU_Slect <= 2;
-															EU_INTER_ADDR <= (HADDR - AHBLite_LVDS_BUFF_BASE_ADDR - 32'h1000)>>2;
+															EU_INTER_ADDR <= (HADDR - `AHBLite_LVDS_BUFF_BASE_ADDR - 32'h1000)>>2;
 														end
 													else if(
-														(HADDR >= (AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1800))
-														&&(HADDR < (AHBLite_LVDS_BUFF_BASE_ADDR + 32'h2000))
+														(HADDR >= (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1800))
+														&&(HADDR < (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h2000))
 													)
 														begin
 															EU_Slect <= 3;
-															EU_INTER_ADDR <= (HADDR - AHBLite_LVDS_BUFF_BASE_ADDR - 32'h1800)>>2;
+															EU_INTER_ADDR <= (HADDR - `AHBLite_LVDS_BUFF_BASE_ADDR - 32'h1800)>>2;
 														end
 													else
 														begin
@@ -271,6 +265,7 @@ module AHBLite_LVDS_Bridge
 													HREADYOUT <= HREADYOUT_RDY;
 												end
 										end
+								end
 						end
 					AHB_Lite_FSM_Read_State		    :
 						begin
