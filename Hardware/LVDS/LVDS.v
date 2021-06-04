@@ -207,6 +207,7 @@ module LVDS
 			begin
 				BUFF_WEN = 0;
 				BUFF_WD_wire = 0;
+				LVDS_EU_STATE = 0;
 			end
 		else
 			begin
@@ -215,9 +216,17 @@ module LVDS
 						begin
 							BUFF_WEN = 0;
 							BUFF_WD_wire = 0;
+							if(
+								(LVDS_STATE_CLEAR_CS == 1)
+								&&(LVDS_STATE_CLEAR)
+							)
+								begin
+									LVDS_EU_STATE = 0;
+								end
 						end
 					RX_FSM_LBUFA	:
 						begin
+							LVDS_EU_STATE = 1;
 							if(BUFF_A_CNT != 31)
 								begin
 									if(BUFF_WADDR == 0)
@@ -239,6 +248,7 @@ module LVDS
 						end
 					RX_FSM_LBUFB	:
 						begin
+							LVDS_EU_STATE = 1;
 							if(BUFF_B_CNT != 31)
 								begin
 									BUFF_WEN = 1;
@@ -252,11 +262,13 @@ module LVDS
 						end
 					RX_FSM_OVER	    :
 						begin
+							LVDS_EU_STATE = 2;
 							BUFF_WEN = 0;
 							BUFF_WD_wire = 0;
 						end
 					default:
 						begin
+							LVDS_EU_STATE = 0;
 							BUFF_WEN = 0;
 							BUFF_WD_wire = 0;
 						end
