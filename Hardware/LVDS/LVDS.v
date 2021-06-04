@@ -26,6 +26,11 @@ module LVDS
 	reg[31:0] BUFF_B;
 	reg[4:0] BUFF_B_CNT;
 	
+	reg CRC_ERR;
+	parameter isCRC_ERR = 1;
+	parameter noCRC_ERR = 0;
+	
+	
 	TPLSRAM_32x512BIT BUFF(
 			.RCLK(CLK),
 			.RADDR(EU_LVDS_BUF_ADDR),
@@ -42,6 +47,7 @@ module LVDS
 	parameter RX_FSM_IDLE		= 16'h0000;
 	parameter RX_FSM_LBUFA		= 16'h0001;
 	parameter RX_FSM_LBUFB		= 16'h0002;
+	parameter RX_FSM_WAITE_CRC	= 16'h0008;
 	parameter RX_FSM_OVER		= 16'h0004;
 	
 	always@(posedge LVDS_CLK or negedge RSTn)
@@ -276,5 +282,34 @@ module LVDS
 			end
 	end
 	
+	
+	reg CRC_ENABLE;
+	reg CRC_INIT;
+	wire[31:0] CRC_VAL;
+	CRC32
+		#(
+			.Init_Value = 32'h0;
+		)
+		CRC_inst(
+			.CLK(LVDS_CLK),
+			.RSTn(RSTn),
+			.CRC_ENABLE(CRC_ENABLE),
+			.CRC_Init(CRC_INIT),
+			.DATA_Serial_Stream(LVDS_DATA),
+			.CRC_Resault(CRC_VAL)
+		);
+		
+	always@(*)
+	begin
+		if(RSTn == 0)
+			begin
+				CRC_ENABLE <= 0;
+				
+			end
+		else
+			begin
+				if(BUFF_WADDR >= 4)
+			end
+	end
 	
 endmodule
