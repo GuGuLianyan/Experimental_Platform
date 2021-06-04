@@ -26,7 +26,8 @@ input  RCLK;
     assign VCC = VCC_power_net1;
     assign ADLIB_VCC = VCC_power_net1;
     
-    RAM1K18 TPLSRAM_32x512BIT_TPLSRAM_32x512BIT_0_TPSRAM_R0C0 (.A_DOUT({
+    RAM1K18 #( .MEMORYFILE("TPLSRAM_32x512BIT_TPLSRAM_32x512BIT_0_TPSRAM_R0C0.mem")
+         )  TPLSRAM_32x512BIT_TPLSRAM_32x512BIT_0_TPSRAM_R0C0 (.A_DOUT({
         nc0, RD[31], RD[30], RD[29], RD[28], RD[27], RD[26], RD[25], 
         RD[24], nc1, RD[23], RD[22], RD[21], RD[20], RD[19], RD[18], 
         RD[17], RD[16]}), .B_DOUT({nc2, RD[15], RD[14], RD[13], RD[12], 
