@@ -2,7 +2,7 @@
 
 module AHBLite_LVDS_Bridge
 	#(
-		parameter LVDS_BUF_ADDR_SIZE = 32
+		parameter LVDS_BUF_ADDR_SIZE = 9
 		
 	)
 	(
@@ -52,8 +52,8 @@ module AHBLite_LVDS_Bridge
 	assign LVDS_EU3 = LVDS_RX_STATE_ADDR[2:2];
 	assign LVDS_EU4 = LVDS_RX_STATE_ADDR[3:3];
 	
-	reg[LVDS_BUF_ADDR_SIZE-1 : 0] EU_INTER_ADDR;
-	assign EU_LVDS_BUF_ADDR = EU_INTER_ADDR;
+	reg[31 : 0] EU_INTER_ADDR;
+	assign EU_LVDS_BUF_ADDR = EU_INTER_ADDR[10:2];
 
 	
 	reg[15:0] AHB_Lite_FSM_current;
@@ -96,10 +96,7 @@ module AHBLite_LVDS_Bridge
 									if(HWRITE == 1)
 										begin
 											if(
-												(HADDR == `AHBLite_LVDS_EU1_STATE)
-												||(HADDR == `AHBLite_LVDS_EU2_STATE)
-												||(HADDR == `AHBLite_LVDS_EU3_STATE)
-												||(HADDR == `AHBLite_LVDS_EU4_STATE)
+												(HADDR & 8'h0F) != 0
 											)
 												begin
 													AHB_Lite_FSM_next = AHB_Lite_FSM_State_Clear;
@@ -112,10 +109,8 @@ module AHBLite_LVDS_Bridge
 									else
 										begin
 											if(
-												(HADDR == `AHBLite_LVDS_EU1_STATE)
-												||(HADDR == `AHBLite_LVDS_EU2_STATE)
-												||(HADDR == `AHBLite_LVDS_EU3_STATE)
-												||(HADDR == `AHBLite_LVDS_EU4_STATE)
+												(HADDR >= `AHBLite_LVDS_Bridge_BASE_ADDR)
+												&&(HADDR < (`AHBLite_LVDS_Bridge_BASE_ADDR + 4))
 											)
 												begin
 													AHB_Lite_FSM_next = AHB_Lite_FSM_Read_State;
@@ -186,13 +181,10 @@ module AHBLite_LVDS_Bridge
 									if(HWRITE == 1)
 										begin
 											if(
-												(HADDR == `AHBLite_LVDS_EU1_STATE)
-												||(HADDR == `AHBLite_LVDS_EU2_STATE)
-												||(HADDR == `AHBLite_LVDS_EU3_STATE)
-												||(HADDR == `AHBLite_LVDS_EU4_STATE)
+												(HADDR & 8'h0F) != 0
 											)
 												begin
-													LVDS_RX_STATE_ADDR <= (HADDR - `AHBLite_LVDS_Bridge_BASE_ADDR);
+													LVDS_RX_STATE_ADDR <= HADDR[3:0];
 													RX_STATE_CLEAR <= isRX_STATE_CLEAR;
 													HREADYOUT <= HREADYOUT_BSY;
 												end
@@ -229,7 +221,6 @@ module AHBLite_LVDS_Bridge
 													)
 														begin
 															EU_Slect <= 0;
-															EU_INTER_ADDR <= (HADDR - `AHBLite_LVDS_BUFF_BASE_ADDR)>>2;
 														end
 													else if(
 														(HADDR >= (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h800))
@@ -237,7 +228,6 @@ module AHBLite_LVDS_Bridge
 													)
 														begin
 															EU_Slect <= 1;
-															EU_INTER_ADDR <= (HADDR - `AHBLite_LVDS_BUFF_BASE_ADDR - 32'h800)>>2;
 														end
 													else if(
 														(HADDR >= (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1000))
@@ -245,7 +235,6 @@ module AHBLite_LVDS_Bridge
 													)
 														begin
 															EU_Slect <= 2;
-															EU_INTER_ADDR <= (HADDR - `AHBLite_LVDS_BUFF_BASE_ADDR - 32'h1000)>>2;
 														end
 													else if(
 														(HADDR >= (`AHBLite_LVDS_BUFF_BASE_ADDR + 32'h1800))
@@ -253,7 +242,6 @@ module AHBLite_LVDS_Bridge
 													)
 														begin
 															EU_Slect <= 3;
-															EU_INTER_ADDR <= (HADDR - `AHBLite_LVDS_BUFF_BASE_ADDR - 32'h1800)>>2;
 														end
 													else
 														begin

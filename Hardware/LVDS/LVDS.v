@@ -1,3 +1,4 @@
+`timescale 1ps/1ps
 module LVDS
 	(
 		input wire LVDS_VS,
@@ -11,6 +12,7 @@ module LVDS
 		input wire[8:0] EU_LVDS_BUF_ADDR,
 		
 		output reg[7:0] LVDS_EU_STATE,
+		output wire LVDS_EU_Interrupt,
 		
 		input wire LVDS_STATE_CLEAR_CS,
 		input wire LVDS_STATE_CLEAR
@@ -18,6 +20,8 @@ module LVDS
 
 
 	reg[8:0] BUFF_WADDR;
+	parameter BUFF_WADDR_limit = 2047;
+	
 	reg[31:0] BUFF_WD_wire;
 	reg BUFF_WEN;
 	
@@ -25,10 +29,6 @@ module LVDS
 	reg[4:0] BUFF_A_CNT;
 	reg[31:0] BUFF_B;
 	reg[4:0] BUFF_B_CNT;
-	
-	reg CRC_ERR;
-	parameter isCRC_ERR = 1;
-	parameter noCRC_ERR = 0;
 	
 	
 	TPLSRAM_32x512BIT BUFF(
@@ -47,8 +47,8 @@ module LVDS
 	parameter RX_FSM_IDLE		= 16'h0000;
 	parameter RX_FSM_LBUFA		= 16'h0001;
 	parameter RX_FSM_LBUFB		= 16'h0002;
-	parameter RX_FSM_WAITE_CRC	= 16'h0008;
-	parameter RX_FSM_OVER		= 16'h0004;
+	parameter RX_FSM_WAITE_CRC	= 16'h0004;
+	parameter RX_FSM_OVER		= 16'h0008;
 	
 	always@(posedge LVDS_CLK or negedge RSTn)
 	begin
@@ -84,46 +84,63 @@ module LVDS
 						end
 					RX_FSM_LBUFA	:	
 						begin
-							if(
-								(BUFF_A_CNT >= 31)
-								&&(BUFF_WADDR < 511)
-								)
+							if(LVDS_VS == 1)
 								begin
-									RX_FSM_next = RX_FSM_LBUFB;
-								end
-							else if(
-								(BUFF_A_CNT >= 31)
-								&&(BUFF_WADDR >= 511)
-								)
-								begin
-									RX_FSM_next = RX_FSM_OVER;
+									RX_FSM_next = RX_FSM_WAITE_CRC;
 								end
 							else
 								begin
-									RX_FSM_next = RX_FSM_LBUFA;
+									if(
+										(BUFF_A_CNT >= 31)
+										&&(BUFF_WADDR < BUFF_WADDR_limit)
+										)
+										begin
+											RX_FSM_next = RX_FSM_LBUFB;
+										end
+									else if(
+										(BUFF_A_CNT >= 31)
+										&&(BUFF_WADDR >= BUFF_WADDR_limit)
+										)
+										begin
+											RX_FSM_next = RX_FSM_WAITE_CRC;
+										end
+									else
+										begin
+											RX_FSM_next = RX_FSM_LBUFA;
+										end
 								end
 						end
 					RX_FSM_LBUFB	:	
 						begin
-							if(
-									(BUFF_WADDR >= 511)
-									&&(BUFF_B_CNT >= 30)
-								)
+							if(LVDS_VS == 1)
 								begin
-									RX_FSM_next = RX_FSM_OVER;
-								end
-							else if
-								(
-									(BUFF_B_CNT >= 31)
-									&&(BUFF_WADDR < 511)
-								)
-								begin
-									RX_FSM_next = RX_FSM_LBUFA;
+									RX_FSM_next = RX_FSM_WAITE_CRC;
 								end
 							else
 								begin
-									RX_FSM_next = RX_FSM_LBUFB;
+									if(
+											(BUFF_WADDR >= BUFF_WADDR_limit)
+										)
+										begin
+											RX_FSM_next = RX_FSM_WAITE_CRC;
+										end
+									else if
+										(
+											(BUFF_B_CNT >= 31)
+											&&(BUFF_WADDR < BUFF_WADDR_limit)
+										)
+										begin
+											RX_FSM_next = RX_FSM_LBUFA;
+										end
+									else
+										begin
+											RX_FSM_next = RX_FSM_LBUFB;
+										end
 								end
+						end
+					RX_FSM_WAITE_CRC:
+						begin
+							RX_FSM_next = RX_FSM_OVER;
 						end
 					RX_FSM_OVER		:
 						begin
@@ -207,13 +224,13 @@ module LVDS
 			end
 	end
 	
+	
 	always@(*)
 	begin
 		if(RSTn == 0)
 			begin
 				BUFF_WEN = 0;
 				BUFF_WD_wire = 0;
-				LVDS_EU_STATE = 0;
 			end
 		else
 			begin
@@ -222,17 +239,9 @@ module LVDS
 						begin
 							BUFF_WEN = 0;
 							BUFF_WD_wire = 0;
-							if(
-								(LVDS_STATE_CLEAR_CS == 1)
-								&&(LVDS_STATE_CLEAR)
-							)
-								begin
-									LVDS_EU_STATE = 0;
-								end
 						end
 					RX_FSM_LBUFA	:
 						begin
-							LVDS_EU_STATE = 1;
 							if(BUFF_A_CNT != 31)
 								begin
 									if(BUFF_WADDR == 0)
@@ -254,7 +263,6 @@ module LVDS
 						end
 					RX_FSM_LBUFB	:
 						begin
-							LVDS_EU_STATE = 1;
 							if(BUFF_B_CNT != 31)
 								begin
 									BUFF_WEN = 1;
@@ -266,15 +274,18 @@ module LVDS
 									BUFF_WD_wire = 0;
 								end
 						end
-					RX_FSM_OVER	    :
+					RX_FSM_WAITE_CRC :
 						begin
-							LVDS_EU_STATE = 2;
+							BUFF_WEN = 1;
+							BUFF_WD_wire = BUFF_B;
+						end
+					RX_FSM_OVER   :
+						begin
 							BUFF_WEN = 0;
 							BUFF_WD_wire = 0;
 						end
 					default:
 						begin
-							LVDS_EU_STATE = 0;
 							BUFF_WEN = 0;
 							BUFF_WD_wire = 0;
 						end
@@ -288,7 +299,7 @@ module LVDS
 	wire[31:0] CRC_VAL;
 	CRC32
 		#(
-			.Init_Value = 32'h0;
+			.Init_Value(32'h0)
 		)
 		CRC_inst(
 			.CLK(LVDS_CLK),
@@ -298,17 +309,107 @@ module LVDS
 			.DATA_Serial_Stream(LVDS_DATA),
 			.CRC_Resault(CRC_VAL)
 		);
-		
+	
+	assign LVDS_EU_Interrupt = LVDS_EU_STATE[1:1];
+	
+	always@(posedge LVDS_CLK or negedge RSTn)
+	begin
+		if(RSTn == 0)
+			begin
+				LVDS_EU_STATE <= 0;
+			end
+		else
+			begin
+				if(
+					(LVDS_STATE_CLEAR_CS == 1)
+					&&(LVDS_STATE_CLEAR == 1)
+				)
+					begin
+						LVDS_EU_STATE <= 0;
+					end
+				else
+					begin
+						case(RX_FSM_current)
+							RX_FSM_IDLE		:
+								begin
+									LVDS_EU_STATE <= LVDS_EU_STATE;
+								end
+							RX_FSM_LBUFA,RX_FSM_LBUFB	:	
+								begin
+									LVDS_EU_STATE <= 1;
+								end
+							RX_FSM_WAITE_CRC:	
+								begin
+									if(CRC_VAL == 0)
+										begin
+											LVDS_EU_STATE <= 1;
+										end
+									else
+										begin
+											LVDS_EU_STATE <= 5;
+										end
+								end
+							RX_FSM_OVER		:
+								begin
+									LVDS_EU_STATE[1:0] <= 2;
+								end
+							default:
+								begin
+									LVDS_EU_STATE <= 0;
+								end
+						endcase
+					end
+			end
+	end
+	
+	
 	always@(*)
 	begin
 		if(RSTn == 0)
 			begin
-				CRC_ENABLE <= 0;
-				
+				CRC_ENABLE = 0;
+				CRC_INIT = 1;
 			end
 		else
 			begin
-				if(BUFF_WADDR >= 4)
+				case(RX_FSM_current)
+					RX_FSM_IDLE,RX_FSM_OVER	:
+						begin
+							CRC_ENABLE = 0;
+							CRC_INIT = 1;
+						end
+					RX_FSM_LBUFA,RX_FSM_LBUFB	:	
+						begin
+							if(
+								(BUFF_WADDR == 0)
+								&&(RX_FSM_current == RX_FSM_LBUFB)
+								)
+								begin
+									CRC_ENABLE = 1;
+									CRC_INIT = 0;
+								end
+							else if(LVDS_VS == 1)
+								begin
+									CRC_ENABLE = 0;
+									CRC_INIT = 0;
+								end
+							else
+								begin
+									CRC_ENABLE = CRC_ENABLE;
+									CRC_INIT = CRC_INIT;
+								end
+						end
+					RX_FSM_WAITE_CRC:	
+						begin
+							CRC_ENABLE = 0;
+							CRC_INIT = 0;
+						end
+					default:
+						begin
+							CRC_ENABLE = 0;
+							CRC_INIT = 1;
+						end
+				endcase
 			end
 	end
 	
